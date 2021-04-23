@@ -17,6 +17,11 @@ source "vsphere-iso" "win2019" {
     RAM                     = "${var.vm_mem_size}"
     RAM_reserve_all         = true
     firmware                = "bios"
+    # Set VM hardware version, goes up to 19 (ESX 7.0 U2 / 7.0.2)
+    vm_version              = "13"
+    # Enable nested hardware virtualization for VM. Defaults to false.
+    NestedHV                = "false"
+    
     # Floppy Configuration
     floppy_files            = ["answer_files/win2019/autounattend.xml", "scripts/disable-network-discovery.cmd", "scripts/disable-servermanager.ps1", "scripts/enable-rdp.cmd", "scripts/enable-winrm.ps1", "scripts/install-vm-tools.cmd", "scripts/set-temp.ps1", "scripts/set-gblocale.ps1", "scripts/install-choco.ps1", "scripts/set-powershelldefault.ps1", "scripts/win-updates.ps1"]
      
@@ -24,8 +29,7 @@ source "vsphere-iso" "win2019" {
     shutdown_command        = "shutdown /s /t 90"
 
     # CDRom Configuration
-    iso_paths               = ["${var.os_iso_path}", "[] /vmimages/tools-isoimages/windows.iso"]
-    convert_to_template     = "true"
+    iso_paths               = ["${var.os_iso_path_win2019}", "[] /vmimages/tools-isoimages/windows.iso"]
 
     # VM Configuration
     guest_os_type           = "windows9Server64Guest"
@@ -45,6 +49,9 @@ source "vsphere-iso" "win2019" {
     winrm_password          = "${var.winadmin_password}"
     winrm_timeout           = "1h30m"
     winrm_username          = "Administrator"
+
+    # Create as template 
+    convert_to_template     = "true"
 }
 
 source "vsphere-iso" "win2019_core" {
@@ -73,8 +80,7 @@ source "vsphere-iso" "win2019_core" {
     shutdown_command        = "shutdown /s /t 90"
 
     # CDRom Configuration
-    iso_paths               = ["${var.os_iso_path}", "[] /vmimages/tools-isoimages/windows.iso"]
-    convert_to_template     = "true"
+    iso_paths               = ["${var.os_iso_path_win2019}", "[] /vmimages/tools-isoimages/windows.iso"]
 
     # VM Configuration
     guest_os_type           = "windows9Server64Guest"
@@ -94,4 +100,7 @@ source "vsphere-iso" "win2019_core" {
     winrm_password          = "${var.winadmin_password}"
     winrm_timeout           = "1h30m"
     winrm_username          = "Administrator"
+
+    # Create as template 
+    convert_to_template     = "true"
 }
