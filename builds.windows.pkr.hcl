@@ -4,7 +4,6 @@ build {
   provisioner "windows-shell" {
     inline = ["ipconfig /all"]
   }
-
 }
 
 build {
@@ -13,5 +12,4 @@ build {
   provisioner "windows-shell" {
     inline = ["ipconfig /all"]
   }
-
 }

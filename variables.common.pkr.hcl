@@ -1,3 +1,4 @@
+# vSphere related
 variable "vcenter_server" {
   type    = string
   default = "${env("VCENTER_SERVER_NAME")}"
@@ -38,16 +39,7 @@ variable "vsphere_network" {
   default = "PG-Engineering-Network"
 }
 
-variable "vm_name_win2019" {
-  type    = string
-  default = "pkr-template-win2019"
-}
-
-variable "vm_name_win2019_core" {
-  type    = string
-  default = "pkr-template-win2019-core"
-}
-
+# VM generic
 variable "vm_cpu_num" {
   type    = string
   default = "2"
@@ -61,14 +53,4 @@ variable "vm_mem_size" {
 variable "os_disk_size" {
   type    = string
   default = "122880"
-}
-
-variable "winadmin_password" {
-  type    = string
-  default = "${env("WINADMIN_PASSWORD")}"
-}
-
-variable "os_iso_path" {
-  type    = string
-  default = "[ISO] en_windows_server_2019_updated_march_2021_x64_dvd_ec2626a1.iso"
 }
