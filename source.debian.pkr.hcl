@@ -25,7 +25,7 @@ source "vsphere-iso" "debian" {
 
     # Boot Configuration
     boot_command          = ["<esc><wait>", "install <wait>", " preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg <wait>", "debian-installer=en_GB.UTF-8 <wait>", "auto <wait>", 
-    "locale=en_GB.UTF-8 <wait>", "kbd-chooser/method=gb <wait>", "keyboard-configuration/xkb-keymap=gb <wait>", "netcfg/get_hostname={{ .Name }} <wait>", "netcfg/get_domain=bromium.net <wait>", 
+    "locale=en_GB.UTF-8 <wait>", "kbd-chooser/method=gb <wait>", "keyboard-configuration/xkb-keymap=gb <wait>", "netcfg/get_hostname={{ .Name }} <wait>", "netcfg/get_domain=domain.local <wait>", 
     "fb=false <wait>", "debconf/frontend=noninteractive <wait>", "console-setup/ask_detect=false <wait>", "console-keymaps-at/keymap=gb <wait>", "grub-installer/bootdev=/dev/sda <wait>", "<enter><wait>"]
     boot_order            = "disk,cdrom"
     boot_wait              = "5s"
@@ -33,7 +33,7 @@ source "vsphere-iso" "debian" {
     # Http directory Configuration
     http_directory         = "debian/http"
     # only use below config if your debian template gets stuck on "Timeout waiting for IP"
-    http_ip                = "10.17.2.106"
+    #http_ip                = "10.17.2.106"
 
     # Shutdown Configuration
     shutdown_command        = "sudo -S /sbin/shutdown -hP now"

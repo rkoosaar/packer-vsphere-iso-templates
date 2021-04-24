@@ -29,7 +29,7 @@ source "vsphere-iso" "ubuntu" {
     # Http directory Configuration
     http_directory         = "ubuntu/http"
     # only use below config if your ubuntu template gets stuck on "Timeout waiting for IP"
-    http_ip                = "10.17.2.106"
+    #http_ip                = "10.17.2.106"
 
     # Shutdown Configuration
     shutdown_command        = "sudo shutdown -P now"
